@@ -1,85 +1,31 @@
-# React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
-
 # sife LINE - Sistema de Controle de Cateteres
 
 ## Sobre o Projeto
 
-O sife LINE é um sistema simples e eficiente que auxilia a equipe de enfermagem no controle de cateteres. Desenvolvido como parte de um teste técnico para uma empresa de desenvolvimento de software da área de saúde, o sistema permite o gerenciamento e monitoramento de diferentes tipos de cateteres utilizados em pacientes.
+O sife LINE é um sistema simples e eficiente que auxilia a equipe de enfermagem no controle de cateteres. Desenvolvido para facilitar o gerenciamento diário de pacientes com dispositivos invasivos, o sistema permite o monitoramento de diferentes tipos de cateteres utilizados em ambiente hospitalar, contribuindo para a segurança do paciente e a organização do trabalho da equipe de saúde.
 
 ## Funcionalidades Principais
 
 - **Dashboard Resumido**: Visualização rápida do total de pacientes com cateteres e alertas para trocas pendentes.
 - **Busca de Pacientes**: Campo de pesquisa para localizar rapidamente pacientes por nome, quarto ou tipo de cateter.
-- **Cadastro de Novos Cateteres**: Formulário simples para registrar novos cateteres com cálculo automático da data de próxima troca.
-- **Lista de Pacientes**: Tabela com todos os pacientes que possuem cateteres ativos, incluindo informações importantes como data de inserção, dias ativos e próxima troca.
+- **Cadastro de Novos Cateteres**: Formulário intuitivo para registrar novos cateteres com cálculo automático da data de próxima troca.
+- **Lista de Pacientes**: Tabela completa com todos os pacientes que possuem cateteres ativos, incluindo informações detalhadas como data de inserção, dias ativos e próxima troca.
 - **Alertas Visuais**: Identificação clara dos pacientes que necessitam de troca de cateter em breve.
+- **Validação de Datas**: Sistema inteligente para evitar erros de cadastro, garantindo coerência entre datas de inserção e remoção.
 
 ## Tipos de Cateteres Suportados
-
-- Periférico (troca a cada 3 dias)
-- Venoso Central (troca a cada 7 dias)
-- PICC (troca a cada 14 dias)
-- Totalmente Implantado
+- **Periférico**:
+- **Venoso Central**
+- **PICC** 
+- **Totalmente Implantado**
 
 ## Tecnologias Utilizadas
 
 - React 19
 - TypeScript
 - Vite
-- CSS moderno (variáveis CSS, flexbox)
+- CSS moderno (variáveis CSS, flexbox, grid)
+- Gerenciamento de estado com React Hooks
 
 ## Como Executar o Projeto
 
@@ -92,27 +38,41 @@ O sife LINE é um sistema simples e eficiente que auxilia a equipe de enfermagem
    ```
    npm run dev
    ```
+4. Acesse a aplicação em seu navegador pelo endereço: `http://localhost:5173`
 
 ## Estrutura do Projeto
 
+- `src/components/` - Componentes React reutilizáveis
+- `src/hooks/` - Custom hooks, incluindo gerenciamento de pacientes
+- `src/services/` - Serviços para lógica de negócios
+- `src/types/` - Definições de tipos TypeScript
 - `src/App.tsx` - Componente principal da aplicação
-- `src/App.css` - Estilos da aplicação
-- `public/` - Arquivos estáticos (ícones, etc.)
+- `src/App.css` - Estilos globais da aplicação
+
+## Banco de Dados de Demonstração
+
+O sistema possui um banco de dados de demonstração com 8 pacientes fictícios, permitindo testar todas as funcionalidades sem necessidade de cadastro inicial. Os dados incluem diferentes tipos de cateteres e variadas situações de troca, representando cenários reais de uso.
 
 ## Próximos Passos
 
-Este projeto implementa apenas a página inicial como solicitado no teste. Em uma versão completa, seria possível adicionar:
+Este projeto implementa a versão inicial do sistema. Em versões futuras, planeja-se adicionar:
 
-- Sistema de autenticação
-- Registro de procedimentos realizados
-- Histórico de cateteres por paciente
-- Notificações para a equipe de enfermagem
-- Relatórios detalhados
+- Sistema de autenticação para diferentes níveis de usuários
+- Registro detalhado de procedimentos realizados
+- Histórico completo de cateteres por paciente
+- Notificações automáticas para a equipe de enfermagem
+- Relatórios estatísticos e analíticos
+- Integração com sistemas hospitalares (HIS)
+- Versão mobile para acesso à beira do leito
 
 ## Considerações sobre o Design
 
-O design foi pensado para ser limpo, intuitivo e funcional, priorizando a facilidade de uso para a equipe de enfermagem. A interface utiliza código de cores para facilitar a identificação de cateteres que necessitam de atenção imediata.
+O design foi desenvolvido seguindo princípios de UX/UI para ambientes de saúde, priorizando:
+- Interface limpa e intuitiva para uso em ambientes de alta demanda
+- Código de cores para identificação rápida de prioridades
+- Acessibilidade para diferentes usuários
+- Responsividade para uso em diversos dispositivos
 
 ---
 
-Desenvolvido como parte de um teste técnico para área de saúde.
+sife LINE - Segurança e Eficiência no Controle de Dispositivos Invasivos
